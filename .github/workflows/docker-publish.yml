@@ -58,9 +58,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Log in to Aliyun Container Registry
-        if: env.HAS_ALIYUN == 'true'
-        env:
-          HAS_ALIYUN: ${{ secrets.ALIYUN_REGISTRY_USER != '' }}
+        if: ${{ secrets.ALIYUN_REGISTRY_USER != '' }}
         uses: docker/login-action@v3
         with:
           registry: registry.cn-hangzhou.aliyuncs.com
